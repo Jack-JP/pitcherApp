@@ -10,6 +10,8 @@ use Nicolaslopezj\Searchable\SearchableTrait;
 class Product extends Model
 {
 
+     use SearchableTrait, Searchable;
+
     protected $searchable = [
     /**
      * Columns and their priority in search results.
@@ -25,10 +27,12 @@ class Product extends Model
     ],
 ];
 
+
     public function categories()
     {
       return $this->belongsToMany('App\Category');
     }
+
 
     public function presentPrice(){
       return money_format('$%i ', $this->price / 100);
