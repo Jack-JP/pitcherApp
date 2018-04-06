@@ -9,7 +9,7 @@ use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Product extends Model
 {
-<<<<<<< HEAD
+
      use SearchableTrait, Searchable;
 
     protected $searchable = [
@@ -27,17 +27,13 @@ class Product extends Model
     ],
 ];
 
-=======
->>>>>>> 13e2931375ecac1bee588203ec36b346b95d720b
+
     public function categories()
     {
       return $this->belongsToMany('App\Category');
     }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 13e2931375ecac1bee588203ec36b346b95d720b
     public function presentPrice(){
       return money_format('$%i ', $this->price / 100);
     }
