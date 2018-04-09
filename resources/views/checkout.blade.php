@@ -25,7 +25,7 @@
 }
 
 #payment-form{
-  width: 50%;
+  width: 90%;
 }
 </style>
 
@@ -34,107 +34,141 @@
 @section('content')
 <div class="container">
   <div class="row">
-    @foreach (Cart::content() as $item)
-    {{ $item->model->name }}
-    | {{ $item->model->presentPrice() }}
-    | {{ $item->qty }}
-    @endforeach
-  </div>
-  <div class="row">
+    <div class="col-md-6">
+      <legend class="text-center">Shipping Address</legend>
+      <hr>
+      <div class="row">
+        <form action="{{ route('checkout.store') }}" method="POST" id="payment-form">
+          {{ csrf_field() }}
 
-  </div>
-  <div class="row">
-    <p>SubTotal: {{ presentPrice(Cart::subtotal()) }}</p>
-    <p>tax (21%): {{ presentPrice(Cart::tax()) }}</p>
-    <p>Total: {{ presentPrice(Cart::total()) }}</p>
-  </div>
-  <div class="row">
-    <form action="{{ route('checkout.store') }}" method="POST" id="payment-form">
-      {{ csrf_field() }}
-
-      <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-        <label for="email">Email</label>
-        <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
-        @if($errors->has('email'))
+          <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
+            @if($errors->has('email'))
             <span class="help-block">{{ $errors->first('email') }}</span>
-        @endif
-      </div>
+            @endif
+          </div>
 
-      <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
-        @if($errors->has('name'))
+          <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
+            @if($errors->has('name'))
             <span class="help-block">{{ $errors->first('name') }}</span>
-        @endif
-      </div>
+            @endif
+          </div>
 
-      <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-        <label for="address">Address</label>
-        <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}" required>
-        @if($errors->has('name'))
+          <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}" required>
+            @if($errors->has('name'))
             <span class="help-block">{{ $errors->first('address') }}</span>
-        @endif
-      </div>
+            @endif
+          </div>
 
-      <div class="half-form">
-        <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
-          <label for="city">City</label>
-          <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}" required>
-          @if($errors->has('name'))
+          <div class="half-form">
+            <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
+              <label for="city">City</label>
+              <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}" required>
+              @if($errors->has('name'))
               <span class="help-block">{{ $errors->first('city') }}</span>
-          @endif
-        </div>
+              @endif
+            </div>
 
-        <div class="form-group{{ $errors->has('province') ? ' has-error' : '' }}">
-          <label for="province">Province</label>
-          <input type="text" class="form-control" id="province" name="province" value="{{ old('province') }}" required>
-          @if($errors->has('name'))
+            <div class="form-group{{ $errors->has('province') ? ' has-error' : '' }}">
+              <label for="province">Province</label>
+              <input type="text" class="form-control" id="province" name="province" value="{{ old('province') }}" required>
+              @if($errors->has('name'))
               <span class="help-block">{{ $errors->first('province') }}</span>
-          @endif
-        </div>
-      </div>
+              @endif
+            </div>
+          </div>
 
-      <div class="half-form">
-        <div class="form-group{{ $errors->has('postalcode') ? ' has-error' : '' }}">
-          <label for="postalcode">Postal Code</label>
-          <input type="text" class="form-control" id="postalcode" name="postalcode" value="{{ old('postalcode') }}" required>
-          @if($errors->has('name'))
+          <div class="half-form">
+            <div class="form-group{{ $errors->has('postalcode') ? ' has-error' : '' }}">
+              <label for="postalcode">Postal Code</label>
+              <input type="text" class="form-control" id="postalcode" name="postalcode" value="{{ old('postalcode') }}" required>
+              @if($errors->has('name'))
               <span class="help-block">{{ $errors->first('postalcode') }}</span>
-          @endif
-        </div>
-        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-          <label for="phone">Phone</label>
-          <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}" required>
-          @if($errors->has('name'))
+              @endif
+            </div>
+            <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+              <label for="phone">Phone</label>
+              <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}" required>
+              @if($errors->has('name'))
               <span class="help-block">{{ $errors->first('phone') }}</span>
-          @endif
-        </div>
-      </div> <!-- end half-form -->
-      <div class="form-group{{ $errors->has('name_on_card') ? ' has-error' : '' }}">
-        <label for="name_on_card">Name on Card</label>
-        <input type="text" class="form-control" id="name_on_card" name="name_on_card" value="">
-        @if($errors->has('name'))
+              @endif
+            </div>
+          </div> <!-- end half-form -->
+          <div class="form-group{{ $errors->has('name_on_card') ? ' has-error' : '' }}">
+            <label for="name_on_card">Name on Card</label>
+            <input type="text" class="form-control" id="name_on_card" name="name_on_card" value="">
+            @if($errors->has('name'))
             <span class="help-block">{{ $errors->first('name_on_card') }}</span>
-        @endif
-      </div>
+            @endif
+          </div>
 
-      <div class="form-group">
-        <label for="card-element">
-          Credit or debit card
-        </label>
-        <div id="card-element">
-          <!-- A Stripe Element will be inserted here. -->
+          <div class="form-group">
+            <label for="card-element">
+              Credit or debit card
+            </label>
+            <div id="card-element">
+              <!-- A Stripe Element will be inserted here. -->
+            </div>
+
+            <!-- Used to display form errors. -->
+            <div id="card-errors" role="alert"></div>
+          </div>
+
+          <button type="submit" id="complete-order" class="button-primary full-width">Complete Order</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-6 ">
+
+      <legend  class="text-center">Review Order</legend>
+      <hr>
+      @foreach(Cart::content() as $item)
+      <div class="row" style="margin-bottom: 15px;">
+        <div class="col-md-4">
+          <a href="{{ route('shop.show', $item->model->slug) }}">
+            @if($item->model->image)
+            <img src="{{ asset('storage/'.$item->model->image) }}" alt="img" class="img-thumbnail">
+            @else
+            <img src="{{ asset('img/defaults/placeholder_default_350x180.png')}}" alt="img" class="img-thumbnail">
+            @endif
+          </a>
+        </div>
+        <div class="col-md-4">
+
+          <div class="row">
+            <strong>{{ $item->model->name }}</strong>
+          </div>
+          <div class="row">
+            <p>Quantity: {{ $item->qty }}</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h6>{{ $item->model->presentPrice() }}</h6>
         </div>
 
-        <!-- Used to display form errors. -->
-        <div id="card-errors" role="alert"></div>
       </div>
+      <hr>
+      @endforeach
 
-      <button type="submit" id="complete-order" class="button-primary full-width">Complete Order</button>
-
-    </form>
-
-
+      <div class="row justify-content-end">
+        <div class="col-md-6 col-offset-md-6">
+          <div class="row justify-content-end" style="border-bottom: gray solid 1px;">
+            <h6><strong>SubTotal: <small>{{ presentPrice(Cart::subtotal()) }}</small></strong> </h6>
+          </div>
+          <div class="row justify-content-end" style="border-bottom: gray solid 1px;">
+            <h6><strong>Tax (21%): <small>{{ presentPrice(Cart::tax()) }}</small></strong> </h6>
+          </div>
+          <div class="row justify-content-end" style="border-bottom: gray solid 1px;">
+            <h6><strong>Total: <small>{{ presentPrice(Cart::total()) }}</small></strong> </h6>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   @endsection

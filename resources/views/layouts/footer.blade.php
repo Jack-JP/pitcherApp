@@ -1,11 +1,44 @@
 
 <footer class="footer">
-  <div class="container">
+  <div class="container-fluid" style="background: #e0e0e0;">
     <div class="row">
-      disclamer
+      <div class="col-md">
+        <div class="row text-center">
+          <ul class="list-group w-100 p-3">
+            <li class="item list-group-item "><strong>About</strong></li>
+            <li class="item list-group-item ">About us</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="row text-center">
+          <ul class="list-group w-100 p-3">
+            <li class="item list-group-item "><strong>Support</strong></li>
+            <li class="item list-group-item ">Contact</li>
+            <li class="item list-group-item ">Returns</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="row text-center">
+          <ul class="list-group w-100 p-3">
+            <li class="item list-group-item "><strong>Legal</strong></li>
+            <li class="item list-group-item ">Privacy</li>
+            <li class="item list-group-item ">Terms</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="row text-center">
+          <ul class="list-group w-100 p-3">
+            <li class="item list-group-item "><strong>Other</strong></li>
+            <li class="item list-group-item ">Account</li>
+          </ul>
+        </div>
+      </div>
     </div>
     <div class="row justify-content-center">
-      <span class="text-muted">© 2018 pitcher App All Rights Reserved</span>
+      <span class="legal">© 2018 pitcher App All Rights Reserved</span>
     </div>
   </div>
 </footer>
