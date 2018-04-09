@@ -62,13 +62,18 @@ class ShopController extends Controller
 
     public function search(Request $request)
     {
-    $request->validate([
-        'query' => 'required|min:3',
-    ]);
-    $query = $request->input('query');
+      $request->validate([
+          'query' => 'required|min:3',
+      ]);
+      $query = $request->input('query');
 
-    $products = Product::search($query)->paginate(10);
-    return view('search-results')->with('products', $products);
+      $products = Product::search($query)->paginate(10);
+      return view('search-results')->with('products', $products);
+    }
+
+    public function searchAlgolia(Request $request)
+    {
+        return view('search-results-algolia');
     }
 
 

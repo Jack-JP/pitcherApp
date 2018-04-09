@@ -2,6 +2,8 @@
 
 @section('styles')
   <link href="{{ asset('css/shop.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link href="{{ asset('css/bootstrap3-3-6.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -43,6 +45,8 @@
             </a>
           <div class="card-body">
             <div class="row"><a href="{{ route('shop.show', $product->slug) }}"><p>{{ $product->name }}</p></a></div>
+              <div class="row"><p>Average rating: {{ $product->averagerating }}/5 </p>
+              </div>
             <div class="row"> <p>{{ $product->presentPrice() }}</p> </div>
             <div class="row">
               <div class="btn-group" role="group" aria-label="Basic example">
@@ -75,10 +79,15 @@
                       @else
                         <img src="{{ asset('img/defaults/placeholder_default_350x180.png')}}" alt="img" class="img-thumbnail">
                       @endif
+
+                      <div>
+                      <p></p>
+                      </div>
+
                     </a>
                 </div>
                 <div class="col-md-5">
-                  <div class="row"><a href="{{ route('shop.show', $product->slug) }}"><p>{{ $product->name }} - {{ $product->presentPrice() }}</p></a></div>
+                  <div class="row"><a href="{{ route('shop.show', $product->slug) }}"><p>{{ $product->name }} - Average rating: {{ $product->averagerating }}/5 - {{ $product->presentPrice() }}</p></a></div>
                   <div class="row"> {!! $product->description !!}</div>
                 </div>
                 <div class="col-md-3">
@@ -113,6 +122,7 @@
   {!!$products->appends(request()->input())->links()!!}
 </div>
 <!-- /.container -->
+</div>
 @endsection
 @section('scripts')
 <script type="text/javascript" src="{{ asset('js/shop.js') }}"></script>

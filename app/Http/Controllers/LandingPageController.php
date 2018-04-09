@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
@@ -13,9 +14,12 @@ class LandingPageController extends Controller
      */
     public function index()
     {
-      $mightAlsoLike = Product::mightAlsoLike()->get();
-        $products = Product::inRandomOrder()->take(8)->get();
-        return view('landing-page', compact('products','mightAlsoLike'));
+      //$products = Product::where('featured', true)->take(8)->inRandomOrder()->get();
+      //$mightAlsoLike = Product::mightAlsoLike()->get();
+      $products = Product::inRandomOrder()->take(8)->get();
+      $categories = Category::all();
+      //return view('landing-page', compact('products','mightAlsoLike'));
+      return view('landing-page', compact('products','categories'));
     }
 
 

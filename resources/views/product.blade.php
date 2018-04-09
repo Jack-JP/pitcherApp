@@ -3,14 +3,53 @@
     <link href="{{ asset('css/single-product/related-product-slider.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('css/single-product/product-info.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('css/single-product/description.css') }}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link href="{{ asset('css/bootstrap3-3-6.css') }}" rel="stylesheet">
 @endsection
 @section('content')
+
+<!-- Errormessage if user already voted -->
+<div class="container">
+  @if (session()->has('data'))
+<div class="alert alert-success">{{session('data')}}</div>
+@endif
+</div>
+
 <div class="container">
     <p><h2 style="text-align:left;">{{ $product->name }}</h2></p>
     <div class="row">
     <div class="gallery col-md-6">
-      Hier komt foto
-    </div>
+      <div class="mx-auto">
+        <img src="{{ asset('storage/'.$product->image) }}" alt="img" class="img-thumbnail">
+      </div>
+        <div class="mx-auto">
+
+          <div class="stars">
+
+          	  <form action="/vote" method="post">
+                {{ csrf_field() }}
+
+          	    <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
+          	    <label class="star star-5" for="star-5"></label>
+          	    <input class="star star-4" id="star-4" type="radio" name="star" value="4"/>
+          	    <label class="star star-4" for="star-4"></label>
+          	    <input class="star star-3" id="star-3" type="radio" name="star" value="3"/>
+          	    <label class="star star-3" for="star-3"></label>
+          	    <input class="star star-2" id="star-2" type="radio" name="star" value="2"/>
+          	    <label class="star star-2" for="star-2"></label>
+          	    <input class="star star-1" id="star-1" type="radio" name="star" value="1"/>
+          	    <label class="star star-1" for="star-1"></label>
+
+                <input type="hidden" name="productid" required="" value="{{ $product->id }}">
+
+                <p>Average rating: {{ $product->averagerating }}/5</p>
+                <button class="btn btn-success">@lang('messages.submit_rating')</button>
+          	  </form>
+
+          </div>
+
+             </div>
+        </div>
 
       <div class="col-md-6">
 
