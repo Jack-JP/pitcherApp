@@ -14,7 +14,10 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    You are logged in!<br>
+                    <button type="button" onclick="window.location='{{ route("landing-page") }}'">
+                      Go to home page
+                    </button>
                 </div>
             </div>
         </div>

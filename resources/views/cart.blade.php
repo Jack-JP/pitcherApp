@@ -93,7 +93,6 @@
 </table>
     @else
       <h4>No items in cart</h4>
-      <h3><a class="btn btn-info" href="{{ route('shop.index') }}">continue shopping</a></h3>
     @endif
   </div><!-- end of div from table Shoppingcart -->
 </div><!-- end of div col-12 -->
