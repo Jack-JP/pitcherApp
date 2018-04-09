@@ -3,10 +3,10 @@
 @section('content')
 <div class="container">
   <div class="row">
-    <h4>Thank you for your order.</h4>
+    <h4>@lang('messages.thankyouorder')</h4>
   </div>
   <div class="row">
-    <a href="/">Home page</a>
+    <a href="/">@lang('messages.homepage')</a>
   </div>
 </div>
 

@@ -2,10 +2,10 @@
 <footer class="footer">
   <div class="container">
     <div class="row">
-      disclamer
+      @lang('messages.disclamer')
     </div>
     <div class="row justify-content-center">
-      <span class="text-muted">© 2018 pitcher App All Rights Reserved</span>
+      <span class="text-muted">@lang('messages.rightsreserved')</span>
     </div>
   </div>
 </footer>

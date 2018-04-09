@@ -31,8 +31,22 @@
           <ul class="navbar-nav mr-auto"></ul>
           <ul class="navbar-nav ml-auto">
             <!-- Authentication Links -->
+            <li class="dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                  {{ Config::get('languages')[App::getLocale()] }}
+              </a>
+              <ul class="dropdown-menu">
+                  @foreach (Config::get('languages') as $lang => $language)
+                      @if ($lang != App::getLocale())
+                          <li>
+                              <a href="{{ route('lang.switch', $lang) }}">{{$language}}</a>
+                          </li>
+                      @endif
+                  @endforeach
+                </ul>
+            </li>
             <li class="list-inline-item">
-              <a class="nav-link" href="{{ route('cart.index') }}">Cart
+              <a class="nav-link" href="{{ route('cart.index') }}">@lang('messages.cart')
                 <span>
                   @if(Cart::instance('default')->count() > 0)
                     <span class="badge badge-info">{{ Cart::instance('default')->count() }}</span>
@@ -41,8 +55,8 @@
               </a>
             </li>
             @guest
-            <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-            <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+            <li><a class="nav-link" href="{{ route('login') }}">{{ __('messages.Login') }}</a></li>
+            <li><a class="nav-link" href="{{ route('register') }}">{{ __('messages.Register') }}</a></li>
             @else
             <li class="nav-item dropdown">
               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -53,7 +67,7 @@
                 <a class="dropdown-item" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
+                {{ __('messages.Logout') }}
               </a>
 
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

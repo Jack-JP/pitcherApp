@@ -3,7 +3,7 @@
   <div class="card  mb-2">
     <div class="card-header">
       <a class="card-link" data-toggle="collapse" data-parent="#accordion" href="#categories-menu">
-        Categories
+        @lang('messages.categories')
       </a>
     </div>
     <div id="categories-menu" class="collapse show">

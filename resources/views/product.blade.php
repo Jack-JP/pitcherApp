@@ -42,7 +42,7 @@
 
                 <input type="hidden" name="productid" required="" value="{{ $product->id }}">
 
-                <p>Average rating: {{ $product->averagerating }}/5</p>
+                <p>@lang('messages.averagerating:') {{ $product->averagerating }}/5</p>
                 <button class="btn btn-success">@lang('messages.submit_rating')</button>
           	  </form>
 
@@ -76,7 +76,7 @@
 
       <div class="product-size">
         <select>
-          <option selected disabled>Select size</option>
+          <option selected disabled>@lang('messages.selectsize')</option>
 
         </select>
       </div>
@@ -85,7 +85,7 @@
 
       <div class="product-color">
       <select>
-        <option selected disabled>Select color</option>
+        <option selected disabled>@lang('messages.selectcolor')</option>
 
       </select>
       </div>
@@ -98,28 +98,28 @@
           <input type="hidden" name="id" value="{{ $product->id }}">
           <input type="hidden" name="name" value="{{ $product->name }}">
           <input type="hidden" name="price" value="{{ $product->price }}">
-          <button type="submit" class="btn btn-success">Add to cart</button>
+          <button type="submit" class="btn btn-success">@lang('messages.addtocart')</button>
         </form>
       </div>
     </div>
   </div>  <!-- end of div first "row" for product info and img -->
   <div>
-     <p> <h3 style="text-align : center;">Product Description</h3> </p>
+     <p> <h3 style="text-align : center;">@lang('messages.productdescription')</h3> </p>
 
   <div class="tab">
-   <button class="tablinks" onclick="openTab(event, 'Description')" id="defaultOpen">Description</button>
-   <button class="tablinks" onclick="openTab(event, 'Specs')">Specs</button>
-   <button class="tablinks" onclick="openTab(event, 'Reviews')">Reviews</button>
+   <button class="tablinks" onclick="openTab(event, 'Description')" id="defaultOpen">@lang('messages.description')</button>
+   <button class="tablinks" onclick="openTab(event, 'Specs')">@lang('messages.specs')</button>
+   <button class="tablinks" onclick="openTab(event, 'Reviews')">@lang('messages.reviews')</button>
   </div>
 
   <div id="Description" class="tabcontent">
-   <h3>Description</h3>
+   <h3>@lang('messages.')description</h3>
    <p>{{ $product->description }}</p>
   </div>
 
   <div id="Specs" class="tabcontent">
-   <h3>Specs</h3>
-   <p>Here is where you find a overview of the product like this.</p>
+   <h3>@lang('messages.specs')</h3>
+   <p>@lang('messages.overviewproductlikethis')</p>
   <ul>
     <?php $product->details = preg_replace('/\.$/', '', $product->details); ?>
     <?php $details = explode(",", $product->details);?>
@@ -130,13 +130,13 @@
   </div>
 
   <div id="Reviews" class="tabcontent">
-   <h3>Reviews</h3>
-   <p>Here can reviews be posted</p>
+   <h3>@lang('messages.reviews')</h3>
+   <p>@lang('messages.herereviews')</p>
   </div>
   </div> <!--end of div description -->
 
 <!-- Below is "related" products -->
-<p> <h3 style="text-align:center;">You also might like</h3> </p>
+<p> <h3 style="text-align:center;">@lang('messages.youalsomightlike')</h3> </p>
   <div class="row mx-auto my-auto">
     <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
       <div class="carousel-inner w-100" role="listbox">
@@ -150,11 +150,11 @@
       </div>
       <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
+              <span class="sr-only">@lang('messages.previous')</span>
           </a>
           <a class="carousel-control-next" href="#recipeCarousel" role="button" data-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
+              <span class="sr-only">@lang('messages.next')</span>
           </a>
     </div>
 

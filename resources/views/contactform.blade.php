@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group">
                   <label for="email">
-                                    @lang('messages.email')</label>
+                                    @lang('messages.emailaddress')</label>
                   <div class="input-group">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
                     </span>

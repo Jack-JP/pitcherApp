@@ -23,11 +23,11 @@ class WishlistController extends Controller
             return $rowId === $id;
         });
         if ($duplicates->isNotEmpty()) {
-            return redirect()->route('cart.index')->with('success', 'Item is already your cart');
+            return redirect()->route('cart.index')->with('success', 'Item is already in your cart');
         }
 
       Cart::instance('default')->add($item->id, $item->name, 1, $item->price)->associate('App\Product');
 
-      return redirect()->route('cart.index')->with('success', 'Item had been moved to cart');
+      return redirect()->route('cart.index')->with('success', 'Item had been moved to your cart');
     }
 }

@@ -12,19 +12,19 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h2 class="text-center">Shopping Cart</h2>
+      <h2 class="text-center">@lang('messages.shoppingcart')</h2>
             <div class="table-responsive">
                 <table class="table table-striped">
                   @if(Cart::count() > 0)
                     <thead>
                         <tr>
-                            <th scope="col">{{ Cart::count() }} Item(s) in cart</th>
-                            <th scope="col">Product</th>
-                            <th scope="col">Available</th>
-                            <th scope="col" class="text-center">Quantity</th>
-                            <th scope="col" class="text-right">Price</th>
-                            <th scope="col" class="text-right">Add To Wishlist </th>
-                            <th scope="col" class="text-right">Delete </th>
+                            <th scope="col">{{ Cart::count() }} @lang('messages.itemsincart')</th>
+                            <th scope="col">@lang('messages.product')</th>
+                            <th scope="col">@lang('messages.available')</th>
+                            <th scope="col" class="text-center">@lang('messages.quantity')</th>
+                            <th scope="col" class="text-right">@lang('messages.price')</th>
+                            <th scope="col" class="text-right">@lang('messages.addtowishlist')</th>
+                            <th scope="col" class="text-right">@lang('messages.delete') </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,7 +32,7 @@
     <tr>
         <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
         <td><a href="{{ route('shop.show', $item->model->slug) }}">{{ $item->name }}</a></td>
-        <td>In stock</td>
+        <td>@lang('messages.instock')</td>
         <td>
           <div>
             <select class="quantity" data-id="{{ $item->rowId }}">
@@ -77,7 +77,7 @@
         <td></td>
         <td></td>
         <td></td>
-        <td>Tax (21%)</td>
+        <td>@lang('messages.tax21')</td>
         <td class="text-right">{{ presentPrice(Cart::tax()) }}</td>
     </tr>
     <tr>
@@ -92,18 +92,18 @@
 </tbody>
 </table>
     @else
-      <h4>No items in cart</h4>
-      <h3><a class="btn btn-info" href="{{ route('shop.index') }}">continue shopping</a></h3>
+      <h4>@lang('messages.noitemsincart')</h4>
+      <h3><a class="btn btn-info" href="{{ route('shop.index') }}">@lang('messages.continueshopping')</a></h3>
     @endif
   </div><!-- end of div from table Shoppingcart -->
 </div><!-- end of div col-12 -->
 <div class="col mb-2">
         <div class="row">
             <div class="col-sm-12  col-md-6">
-                <a href="{{ route('shop.index') }}" class="btn btn-block btn-light">Continue Shopping</a>
+                <a href="{{ route('shop.index') }}" class="btn btn-block btn-light">@lang('messages.continueshopping')</a>
             </div>
             <div class="col-sm-12 col-md-6 text-right">
-                <button class="btn btn-lg btn-block btn-success text-uppercase">Next Step (Billing)</button>
+                <button class="btn btn-lg btn-block btn-success text-uppercase">@lang('messages.nextstepbilling')</button>
             </div>
         </div>
     </div>
@@ -111,18 +111,18 @@
 <br><br><br><br>
 <div class="row">
     <div class="col-12">
-    <h2 class="text-center">Wishlist</h2>
+    <h2 class="text-center">@lang('messages.wishlist')</h2>
     <div class="table-responsive">
         <table class="table table-striped">
   @if(Cart::instance('saveForLater')->count() > 0)
   <thead>
       <tr>
-          <th scope="col">{{ Cart::instance('saveForLater')->count() }} Item(s) in wishlist</th>
-          <th scope="col">Product</th>
-          <th scope="col">Available</th>
-          <th scope="col" class="text-right">Price</th>
-          <th scope="col" class="text-right">Add To Cart </th>
-          <th scope="col" class="text-right">Delete </th>
+          <th scope="col">{{ Cart::instance('saveForLater')->count() }} @lang('messages.')itemsinwishlist</th>
+          <th scope="col">@lang('messages.product')</th>
+          <th scope="col">@lang('messages.available')</th>
+          <th scope="col" class="text-right">@lang('messages.price')</th>
+          <th scope="col" class="text-right">@lang('messages.addtocart') </th>
+          <th scope="col" class="text-right">@lang('messages.delete') </th>
       </tr>
   </thead>
   <tbody>
@@ -130,7 +130,7 @@
     <tr>
         <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
         <td><a href="{{ route('shop.show', $item->model->slug) }}">{{ $item->name }}</a></td>
-        <td>In stock</td>
+        <td>@lang('messages.instock')</td>
         <td class="text-right">{{ $item->model->presentPrice() }}</td>
         <td class="text-right">
           <form action="{{ route('wishlist.addtocart', $item->rowId) }}" method="post">
@@ -153,7 +153,7 @@
     @endforeach
 
   @else
-    <h3>No items in your wishlist</h3>
+    <h3>@lang('messages.noitemsinyourwishlist')</h3>
 
   @endif
 </tbody>
@@ -165,7 +165,7 @@
 <br><br><br><br><br><br>
   <!-- Below is "related" products -->
   <div class="container-fluid">
-  <p> <h3 style="text-align:center;">You also might like</h3> </p>
+  <p> <h3 style="text-align:center;">@lang('messages.youalsomightlike')</h3> </p>
     <div class="row mx-auto my-auto">
       <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
         <div class="carousel-inner w-100" role="listbox">
@@ -179,11 +179,11 @@
         </div>
         <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
+                <span class="sr-only">@lang('messages.previous')</span>
             </a>
             <a class="carousel-control-next" href="#recipeCarousel" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
+                <span class="sr-only">@lang('messages.next')</span>
             </a>
       </div>
     </div>  <!-- end of div last row from carrousel -->

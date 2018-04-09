@@ -44,16 +44,16 @@
 
   </div>
   <div class="row">
-    <p>SubTotal: {{ presentPrice(Cart::subtotal()) }}</p>
-    <p>tax (21%): {{ presentPrice(Cart::tax()) }}</p>
-    <p>Total: {{ presentPrice(Cart::total()) }}</p>
+    <p>@lang('messages.subtotal'): {{ presentPrice(Cart::subtotal()) }}</p>
+    <p>@lang('messages.tax21'): {{ presentPrice(Cart::tax()) }}</p>
+    <p>@lang('messages.total'): {{ presentPrice(Cart::total()) }}</p>
   </div>
   <div class="row">
     <form action="{{ route('checkout.store') }}" method="POST" id="payment-form">
       {{ csrf_field() }}
 
       <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-        <label for="email">Email</label>
+        <label for="email">@lang('messages.email')</label>
         <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
         @if($errors->has('email'))
             <span class="help-block">{{ $errors->first('email') }}</span>
@@ -61,7 +61,7 @@
       </div>
 
       <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-        <label for="name">Name</label>
+        <label for="name">@lang('messages.name')</label>
         <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
         @if($errors->has('name'))
             <span class="help-block">{{ $errors->first('name') }}</span>
@@ -69,7 +69,7 @@
       </div>
 
       <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-        <label for="address">Address</label>
+        <label for="address">@lang('messages.address')</label>
         <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}" required>
         @if($errors->has('name'))
             <span class="help-block">{{ $errors->first('address') }}</span>
@@ -78,7 +78,7 @@
 
       <div class="half-form">
         <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
-          <label for="city">City</label>
+          <label for="city">@lang('messages.city')</label>
           <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}" required>
           @if($errors->has('name'))
               <span class="help-block">{{ $errors->first('city') }}</span>
@@ -86,7 +86,7 @@
         </div>
 
         <div class="form-group{{ $errors->has('province') ? ' has-error' : '' }}">
-          <label for="province">Province</label>
+          <label for="province">@lang('messages.province')</label>
           <input type="text" class="form-control" id="province" name="province" value="{{ old('province') }}" required>
           @if($errors->has('name'))
               <span class="help-block">{{ $errors->first('province') }}</span>
@@ -96,7 +96,7 @@
 
       <div class="half-form">
         <div class="form-group{{ $errors->has('postalcode') ? ' has-error' : '' }}">
-          <label for="postalcode">Postal Code</label>
+          <label for="postalcode">@lang('messages.postalcode')</label>
           <input type="text" class="form-control" id="postalcode" name="postalcode" value="{{ old('postalcode') }}" required>
           @if($errors->has('name'))
               <span class="help-block">{{ $errors->first('postalcode') }}</span>
@@ -111,7 +111,7 @@
         </div>
       </div> <!-- end half-form -->
       <div class="form-group{{ $errors->has('name_on_card') ? ' has-error' : '' }}">
-        <label for="name_on_card">Name on Card</label>
+        <label for="name_on_card">@lang('messages.cardholder')</label>
         <input type="text" class="form-control" id="name_on_card" name="name_on_card" value="">
         @if($errors->has('name'))
             <span class="help-block">{{ $errors->first('name_on_card') }}</span>
@@ -120,7 +120,7 @@
 
       <div class="form-group">
         <label for="card-element">
-          Credit or debit card
+          @lang('messages.creditordebit')
         </label>
         <div id="card-element">
           <!-- A Stripe Element will be inserted here. -->
@@ -130,7 +130,7 @@
         <div id="card-errors" role="alert"></div>
       </div>
 
-      <button type="submit" id="complete-order" class="button-primary full-width">Complete Order</button>
+      <button type="submit" id="complete-order" class="button-primary full-width">@lang('messages.completeorder')</button>
 
     </form>
 

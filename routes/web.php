@@ -25,6 +25,8 @@ Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
 
 Route::get('/thankyou', 'ConfirmationController@index')->name('confirmation.index');
 
+Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

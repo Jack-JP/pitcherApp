@@ -63,7 +63,7 @@ class RatingsController extends Controller
         $product->averagerating = $averagerating;
         $product->save();
         }else{
-          $errormessage = __('messages.rated_article');
+          $errormessage = __('messages.rated_product');
           return redirect()->back()->with('data', $errormessage);
         }
 

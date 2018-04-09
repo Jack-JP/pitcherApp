@@ -19,14 +19,14 @@
           <div class="row">
             <div class="col-6"><h1 class="my-4 text-left">{{ $categoryName }}</h1></div>
             <div class="col-6">
-              <strong>Price</strong>
-                <a href="{{ route('shop.index', ['category'=> request()->category, 'sort'=>'high_low']) }}">High to Low</a>|
-                <a href="{{ route('shop.index', ['category'=> request()->category, 'sort'=>'low_high']) }}">Low to High</a>
+              <strong>@lang('messages.price')</strong>
+                <a href="{{ route('shop.index', ['category'=> request()->category, 'sort'=>'high_low']) }}">@lang('messages.hightolow')</a>|
+                <a href="{{ route('shop.index', ['category'=> request()->category, 'sort'=>'low_high']) }}">@lang('messages.lowtohigh')</a>
             </div>
           </div>
         </div>
         <div class="col-4">
-          <div class="btn-group" role="group" aria-label="Basic example">
+          <div class="btn-group" role="group" aria-label="{{__('messages.basicexample')}}">
             <button id="list" type="button" class="btn btn-secondary"><i class="fas fa-align-justify"></i></button>
             <button id="block" type="button" class="btn btn-secondary"><i class="fas fa-th"></i></button>
           </div>
@@ -45,7 +45,7 @@
             </a>
           <div class="card-body">
             <div class="row"><a href="{{ route('shop.show', $product->slug) }}"><p>{{ $product->name }}</p></a></div>
-              <div class="row"><p>Average rating: {{ $product->averagerating }}/5 </p>
+              <div class="row"><p>@lang('messages.averagerating:') {{ $product->averagerating }}/5 </p>
               </div>
             <div class="row"> <p>{{ $product->presentPrice() }}</p> </div>
             <div class="row">
@@ -55,14 +55,14 @@
                   <input type="hidden" name="id" value="{{ $product->id }}">
                   <input type="hidden" name="name" value="{{ $product->name }}">
                   <input type="hidden" name="price" value="{{ $product->price }}">
-                  <button type="submit" class="btn btn-success">Add to cart</button>
+                  <button type="submit" class="btn btn-success">@lang('messages.addtocart')</button>
                 </form>
               </div>
             </div>
           </div>
         </div>
         @empty
-        <div>No items found</div>
+        <div>@lang('messages.noitemsfound')</div>
         @endforelse
       </div><!--End Product block -->
 
@@ -87,7 +87,7 @@
                     </a>
                 </div>
                 <div class="col-md-5">
-                  <div class="row"><a href="{{ route('shop.show', $product->slug) }}"><p>{{ $product->name }} - Average rating: {{ $product->averagerating }}/5 - {{ $product->presentPrice() }}</p></a></div>
+                  <div class="row"><a href="{{ route('shop.show', $product->slug) }}"><p>{{ $product->name }} - @lang('messages.averagerating:') {{ $product->averagerating }}/5 - {{ $product->presentPrice() }}</p></a></div>
                   <div class="row"> {!! $product->description !!}</div>
                 </div>
                 <div class="col-md-3">
@@ -97,7 +97,7 @@
                       <input type="hidden" name="id" value="{{ $product->id }}">
                       <input type="hidden" name="name" value="{{ $product->name }}">
                       <input type="hidden" name="price" value="{{ $product->price }}">
-                      <button type="submit" class="btn btn-success">Add to cart</button>
+                      <button type="submit" class="btn btn-success">@lang('messages.addtocart')</button>
                     </form>
                   </div>
                 </div>
@@ -106,7 +106,7 @@
           </div>
         </div>
         @empty
-        <div>No items found</div>
+        <div>@lang('messages.noitemsfound')</div>
         @endforelse
       </div><!--End prodcut list -->
 
