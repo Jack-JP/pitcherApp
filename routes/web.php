@@ -30,6 +30,18 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+Route::get('wishlist', function(){
+    return view('wishlist');
+});
+
+Route::get('profile', function(){
+    return view('profile');
+})->name('profile');
+
+
+Route::get('orders', function(){
+    return view('orders');
+});
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
